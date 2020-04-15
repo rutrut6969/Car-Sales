@@ -19,20 +19,8 @@ export const reducer = (state = initialState, action) => {
   console.log(state);
   switch (action.type) {
     case 'REMOVE_ITEM':
-      return {
-        ...state,
-        car: {
-          ...state.car,
-          features: [
-            ...state.car.features.reduce((accum, curr) => {
-              if (curr.id !== action.id) {
-                return { ...accum, curr };
-              }
-              return { ...accum };
-            }),
-          ],
-        },
-      };
+      return state.car.features.filter(({ id }) => id !== action.id);
+    // state.car.features.filter(({ id }) => console.log(id));
 
     case 'BUY_ITEM':
       return state;
