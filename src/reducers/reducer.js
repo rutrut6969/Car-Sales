@@ -19,8 +19,17 @@ export const reducer = (state = initialState, action) => {
   console.log(state);
   switch (action.type) {
     case 'REMOVE_ITEM':
-      return state.car.features.filter(({ id }) => id !== action.id);
+      return {
+        ...state,
+        additionalPrice: state.additionalPrice - action.price,
+        car: {
+          ...state.car,
+          features: state.car.features.filter(({ id }) => id !== action.id),
+        },
+      };
+    // state.car.features.filter(({ id }) => id !== action.id);
     // state.car.features.filter(({ id }) => console.log(id));
+    // console.log('Action ID for Remove_Items', action.id);
 
     case 'BUY_ITEM':
       return state;
@@ -28,6 +37,7 @@ export const reducer = (state = initialState, action) => {
     case 'ADD_FEATURE':
       return {
         ...state,
+        additionalPrice: state.additionalPrice + action.price,
         car: {
           ...state.car,
           features: [
@@ -35,6 +45,7 @@ export const reducer = (state = initialState, action) => {
             {
               id: action.id,
               name: action.payload,
+              price: action.price,
             },
           ],
         },

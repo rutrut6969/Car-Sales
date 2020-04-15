@@ -8,7 +8,11 @@ const AdditionalFeature = (props) => {
       <button
         className='button'
         onClick={function () {
-          props.addFeature(props.feature.name, props.feature.id);
+          props.addFeature(
+            props.feature.name,
+            props.feature.id,
+            props.feature.price
+          );
         }}
       >
         {/* {console.log('props items', props.feature.name, props.feature.id)} */}

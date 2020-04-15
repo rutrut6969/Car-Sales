@@ -36,6 +36,7 @@ const mapStateToProps = (state) => {
   console.log(state);
   return {
     state: state,
+    additionalPrice: state.additionalPrice,
   };
 };
 export default connect(mapStateToProps, {})(App);

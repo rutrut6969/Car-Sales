@@ -8,9 +8,9 @@ const AddedFeature = (props) => {
       {/* Add an onClick to run a function to remove a feature */}
       <button
         className='button'
-        onClick={() => props.removeItem(props.feature.id)}
+        onClick={() => props.removeItem(props.feature.id, props.feature.price)}
       >
-        X
+        {console.log(props.feature.price)}X
       </button>
       {props.feature.name}
       {console.log(props.feature.name)}
